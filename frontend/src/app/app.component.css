@@ -1,0 +1,4 @@
+.app { max-width:900px; margin:0 auto; padding:20px; background:#14181c; border-radius:36px; border:1px solid #2a3138; }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; padding:0 8px; }
+.logo { font-weight:600; font-size:20px; background:linear-gradient(135deg,#00d4ff,#7b61ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.user-info { color:#b6c8d6; font-size:14px; }

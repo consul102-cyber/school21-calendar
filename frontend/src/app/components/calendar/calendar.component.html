@@ -1,0 +1,13 @@
+<div class="calendar-grid">
+  <div class="day-cell header-cell" *ngFor="let w of weekdays">{{ w }}</div>
+  <div class="day-cell empty-cell" *ngFor="let _ of [].constructor(0)"></div>
+  <div class="day-cell" *ngFor="let day of days" [class.weekend]="day.isWeekend" [class.selected]="isSelected(day.date)" (click)="selectDay(day.date)">
+    <div class="day-number">{{ day.day }}</div>
+    <div class="event-dots">
+      <span class="event-dot" *ngFor="let ev of getDayEvents(day.date) | slice:0:2" [class.other]="ev.author !== 'orbeloha'">
+        {{ ev.description.length > 8 ? (ev.description | slice:0:8) + '…' : ev.description }}
+      </span>
+      <span class="event-dot other" *ngIf="getDayEvents(day.date).length > 2">+{{ getDayEvents(day.date).length - 2 }}</span>
+    </div>
+  </div>
+</div>

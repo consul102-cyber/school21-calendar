@@ -1,0 +1,19 @@
+<div class="app">
+  <div class="header">
+    <div class="logo">■ Школа 21</div>
+    <div class="user-info">
+      <span *ngIf="currentUser">👤 {{ currentUser }}</span>
+      <span *ngIf="!currentUser" style="color:#5e7384;">Не авторизован</span>
+    </div>
+  </div>
+  <app-calendar [events]="events" [selectedDate]="selectedDate" (dateSelected)="selectDate($event)"></app-calendar>
+  <app-event-form
+    [selectedDate]="selectedDate"
+    [currentUser]="currentUser"
+    [events]="events"
+    (eventCreated)="onEventCreated($event)"
+    (eventUpdated)="onEventUpdated($event)"
+    (eventDeleted)="onEventDeleted($event)"
+    (userSet)="setUser($event)">
+  </app-event-form>
+</div>

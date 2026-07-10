@@ -1,0 +1,79 @@
+<div class="event-panel">
+  <h3>События <small>{{ selectedDate | date:'d MMMM' }}</small></h3>
+  <div id="eventList">
+    <div *ngIf="getDayEvents().length === 0" class="empty-message">Нет событий на этот день</div>
+    <div class="event-item" *ngFor="let ev of getDayEvents()" (click)="viewEvent(ev)">
+      <div class="info">
+        <span class="badge">{{ ev.author }}</span>
+        <span class="badge">{{ ev.time }}–{{ getEndTime(ev) }}</span>
+        <span class="badge">{{ ev.type }}</span>
+        <span class="badge">{{ ev.floor }} эт. · {{ ev.location }}</span>
+        <span class="text">{{ ev.description }}</span>
+        <span class="badge" *ngIf="ev.attendees.length > 0">👥 {{ ev.attendees.length }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-event-form">
+    <div class="form-row">
+      <label>📅 Дата</label>
+      <input type="date" [(ngModel)]="event.date" min="2026-07-13" max="2026-07-26">
+      <label>⏱ Длит. (мин)</label>
+      <input type="number" [(ngModel)]="event.duration" min="30" max="120" step="10" style="width:90px;">
+      <label>⏰ Начало</label>
+      <input type="time" [(ngModel)]="event.time" step="60">
+      <span class="end-time-display">⏰ Окончание: {{ endTime }}</span>
+    </div>
+    <div class="form-row">
+      <label>🏷 Тип</label>
+      <select [(ngModel)]="event.type"><option value="обучение">Обучение</option><option value="развлечение">Развлечение</option></select>
+      <label>🏢 Этаж</label>
+      <select [(ngModel)]="event.floor"><option value="17">17</option><option value="18">18</option></select>
+      <label>📍 Локация</label>
+      <select [(ngModel)]="event.location">
+        <option value="холл">Холл (17 этаж)</option>
+        <option value="кухня">Кухня</option>
+        <option value="игровая">Игровая (18 этаж)</option>
+        <option value="коридор">Коридор</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <input type="text" [(ngModel)]="event.description" placeholder="Описание события" style="flex:2; min-width:160px;">
+      <button (click)="createEvent()">➕ Создать</button>
+    </div>
+  </div>
+  <div class="footer-actions">
+    <button (click)="exportToCalendar()">📱 Добавить в календарь телефона</button>
+  </div>
+</div>
+
+<div class="announce-overlay" *ngIf="showAnnounce && selectedEvent">
+  <div class="announce-card">
+    <button class="close-btn" (click)="showAnnounce = false">✕</button>
+    <div class="title">📢 АНОНС</div>
+    <div class="detail"><strong>{{ selectedEvent.description }}</strong></div>
+    <div class="meta">
+      🏷 {{ selectedEvent.type }} · {{ selectedEvent.floor }} этаж · {{ selectedEvent.location }}<br>
+      📅 {{ selectedEvent.date | date:'d MMMM' }} · ⏰ {{ selectedEvent.time }}–{{ getEndTime(selectedEvent) }} · ⏱ {{ selectedEvent.duration }} мин<br>
+      👤 автор: {{ selectedEvent.author }}
+    </div>
+    <div class="actions">
+      <button class="primary" (click)="toggleAttend()">{{ isAttending ? '✅ Приду' : '📌 Приду' }}</button>
+      <span class="attend-counter">👥 <span>{{ selectedEvent.attendees.length }}</span></span>
+      <button *ngIf="canDelete()" (click)="deleteEvent()" style="background:#ff6b6b;">🗑 Удалить</button>
+      <button (click)="showAnnounce = false">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<div class="announce-overlay" *ngIf="showAuthModal">
+  <div class="announce-card auth-modal">
+    <div class="title">🔑 Введите ваш ник</div>
+    <p style="color:#8a9aa8; font-size:14px; margin-bottom:4px;">Введите ник из списка или укажите "orbeloha" для модерации</p>
+    <input type="text" [(ngModel)]="authNick" placeholder="Ваш ник в школе 21" (keydown.enter)="confirmAuth()">
+    <div class="actions" style="justify-content:flex-end;">
+      <button (click)="showAuthModal = false">Отмена</button>
+      <button class="primary" (click)="confirmAuth()">Подтвердить</button>
+    </div>
+  </div>
+</div>

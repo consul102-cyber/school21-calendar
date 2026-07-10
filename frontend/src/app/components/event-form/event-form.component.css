@@ -1,0 +1,38 @@
+.event-panel { background:#10161b; border-radius:28px; padding:20px 18px; border:1px solid #293239; }
+.event-panel h3 { font-weight:500; font-size:16px; margin-bottom:12px; color:#b6c8d6; display:flex; justify-content:space-between; align-items:center; }
+.event-panel h3 small { font-weight:400; color:#6a7e8e; font-size:13px; }
+.event-item { background:#1f2933; border-radius:40px; padding:10px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-left:4px solid #4b6af5; cursor:pointer; transition:0.15s; }
+.event-item:hover { background:#26323e; }
+.event-item .info { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.event-item .info .badge { background:#2f3a44; border-radius:40px; padding:2px 12px; font-size:12px; font-weight:500; }
+.event-item .info .text { font-size:15px; }
+.add-event-form { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; align-items:center; }
+.add-event-form select, .add-event-form input { background:#20272e; border:1px solid #2f3a44; border-radius:40px; padding:10px 16px; color:white; font-size:14px; outline:none; min-width:100px; }
+.add-event-form select option { background:#14181c; }
+.add-event-form input:focus, .add-event-form select:focus { border-color:#6c8cff; }
+.add-event-form button { background:#4b6af5; border:none; border-radius:40px; padding:10px 24px; color:white; font-weight:500; font-size:14px; cursor:pointer; transition:0.15s; white-space:nowrap; }
+.add-event-form button:hover { background:#5f7aff; }
+.form-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; width:100%; }
+.form-row label { color:#8a9aa8; font-size:13px; margin-right:4px; }
+.empty-message { color:#5e7384; font-size:14px; padding:12px 0 6px; }
+.footer-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.footer-actions button { background:#1f2933; border:1px solid #2f3a44; border-radius:40px; padding:6px 18px; color:#b6c8d6; font-size:13px; cursor:pointer; transition:0.1s; }
+.footer-actions button:hover { background:#2f3a44; }
+.end-time-display { color:#8a9aa8; font-size:14px; padding:4px 12px; background:#1b2229; border-radius:40px; border:1px solid #2f3a44; }
+.announce-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); display:flex; justify-content:center; align-items:center; z-index:1000; backdrop-filter:blur(4px); padding:20px; }
+.announce-card { background:#1b2229; border:1px solid #3d4a57; border-radius:32px; padding:28px 30px; max-width:480px; width:100%; box-shadow:0 24px 48px rgba(0,0,0,0.8); animation:slideUp 0.25s ease-out; }
+@keyframes slideUp { from { opacity:0; transform:translateY(30px) scale(0.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+.announce-card .title { font-size:22px; font-weight:700; color:#ffd966; margin-bottom:8px; }
+.announce-card .detail { color:#c8d6e5; font-size:15px; line-height:1.6; margin-bottom:16px; }
+.announce-card .meta { color:#8a9aa8; font-size:13px; border-top:1px solid #2f3a44; padding-top:12px; margin-bottom:16px; }
+.announce-card .actions { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.announce-card .actions button { background:#2f3a44; border:none; border-radius:40px; padding:8px 20px; color:white; font-weight:500; font-size:14px; cursor:pointer; transition:0.1s; }
+.announce-card .actions button.primary { background:#4b6af5; }
+.announce-card .actions button.primary:hover { background:#5f7aff; }
+.announce-card .actions button:hover { background:#3d4a57; }
+.announce-card .close-btn { background:transparent; border:none; color:#8a9aa8; font-size:24px; cursor:pointer; float:right; }
+.attend-counter { display:inline-flex; align-items:center; gap:6px; background:#20272e; border-radius:40px; padding:4px 14px; font-size:14px; color:#b6c8d6; }
+.attend-counter span { color:#4b6af5; font-weight:600; }
+.auth-modal .announce-card { max-width:400px; }
+.auth-modal input { background:#20272e; border:1px solid #2f3a44; border-radius:40px; padding:10px 16px; color:white; font-size:14px; width:100%; outline:none; margin:8px 0 16px; }
+.auth-modal input:focus { border-color:#6c8cff; }

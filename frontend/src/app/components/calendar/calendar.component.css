@@ -1,0 +1,11 @@
+.calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin:12px 0 18px; }
+.day-cell { background:#1b2229; border-radius:16px; padding:10px 4px 8px; text-align:center; font-size:13px; color:#8a9aa8; border:1px solid #293239; min-height:68px; cursor:default; transition:0.15s; }
+.day-cell:hover { background:#26323e; cursor:pointer; }
+.day-cell.selected { border:2px solid #4b6af5; background:#1f2a36; }
+.day-cell.weekend { color:#6d7e8d; }
+.day-cell.header-cell { background:transparent; border:none; color:#5e7384; font-weight:400; font-size:12px; min-height:auto; padding:4px; }
+.day-cell.empty-cell { background:transparent; border:none; min-height:auto; }
+.day-number { font-size:18px; font-weight:600; color:#eef2f6; margin-bottom:4px; }
+.event-dots { display:flex; flex-direction:column; gap:2px; align-items:center; }
+.event-dot { background:#4b6af5; border-radius:20px; padding:2px 8px; font-size:9px; font-weight:600; color:white; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block; }
+.event-dot.other { background:#3d4a57; }
